@@ -1,33 +1,39 @@
 import { LoginCreate } from "../LoginCreate";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { api } from "../../services/api";
+import { Input } from "../Forms/Input";
+import { Button } from "../Forms/Button";
+import { useContext, useState } from "react";
+import { UserContext } from "../../Contexts/UserContext";
 
 export const LoginForm = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
 
-  function handleSubmit(event) {
+  const { userLogin } = useContext(UserContext);
+
+  async function handleSubmit(event) {
     event.preventDefault();
 
-    api
-      .post("jwt-auth/v1/token", { username, password })
-      .then((res) => console.log(res.data.token));
+    userLogin(username, password);
   }
 
   return (
     <section>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <input
+        <Input
+          label="User"
           type="text"
+          name="username"
           onChange={({ target }) => setUsername(target.value)}
         />
-        <input
-          type="text"
+        <Input
+          label="Password"
+          type="password"
+          name="password"
           onChange={({ target }) => setPassword(target.value)}
         />
-        <button>Send</button>
+        <Button>Log in</Button>
       </form>
 
       <Link to="/login/create">

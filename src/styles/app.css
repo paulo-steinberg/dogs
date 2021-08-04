@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    --yellow-first: #fb1;
+    --brown-first: #764701;
 }
 
 body {
