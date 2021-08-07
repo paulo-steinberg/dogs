@@ -15,7 +15,6 @@ export const Input = ({ label, type, name, value, onChange, ...rest }) => {
           {...rest}
         />
       </label>
-      <p className={styles.error}>Error</p>
     </div>
   );
 };
