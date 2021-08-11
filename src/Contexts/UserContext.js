@@ -11,18 +11,6 @@ export const UserStorage = ({ children }) => {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
-  const userLogOut = useCallback(
-    async function () {
-      setData(null);
-      setError(null);
-      setIsLoading(false);
-      setIsLogged(false);
-      window.localStorage.removeItem("token");
-      navigate("/login");
-    },
-    [navigate]
-  );
-
   async function getUser(token) {
     try {
       const { data } = await GET_USER(token);
@@ -54,6 +42,18 @@ export const UserStorage = ({ children }) => {
       setIsLoading(false);
     }
   }
+
+  const userLogOut = useCallback(
+    async function () {
+      setData(null);
+      setError(null);
+      setIsLoading(false);
+      setIsLogged(false);
+      window.localStorage.removeItem("token");
+      navigate("/login");
+    },
+    [navigate]
+  );
 
   useEffect(() => {
     async function autoLogin() {

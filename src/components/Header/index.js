@@ -19,7 +19,6 @@ export const Header = () => {
             <Link to="account" className={styles.login}>
               {data.nome}
             </Link>
-            <button onClick={userLogOut}>LogOut</button>
           </>
         ) : (
           <Link to="login" className={styles.login}>

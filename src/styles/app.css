@@ -75,6 +75,10 @@ a {
     animation: animateLeft .3s forwards;
 }
 
+.upper {
+    text-transform: capitalize;
+}
+
 @keyframes animateLeft {
     to {
         opacity: 1;
