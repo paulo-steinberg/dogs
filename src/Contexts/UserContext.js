@@ -63,7 +63,6 @@ export const UserStorage = ({ children }) => {
           setError(null);
           setIsLoading(true);
           const response = await VALIDATE_TOKEN(token);
-          console.log(response);
           const status = response.status;
           if (status !== 200) console.error("Invalid Token");
 

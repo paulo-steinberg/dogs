@@ -24,3 +24,26 @@ export async function VALIDATE_TOKEN(token) {
 export async function CREATE_USER(username, email, password) {
   return api.post("api/user", { username, email, password });
 }
+
+export async function SEND_PHOTO(token, payload) {
+  api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return api.post("api/photo", payload);
+}
+
+export async function GET_PHOTOS({ page, total, user }) {
+  return api.get(`api/photo/?_page=${page}&_total=${total}&_user=${user}`);
+}
+
+export async function GET_PHOTO(id) {
+  return api.get(`api/photo/${id}`);
+}
+
+export async function SEND_COMMENT(id, payload, token) {
+  api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return api.post(`api/comment/${id}`, payload);
+}
+
+export async function DELETE_PHOTO(id, token) {
+  api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return api.delete(`api/comment/${id}`);
+}
